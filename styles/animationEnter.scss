@@ -1,0 +1,63 @@
+@import url('https://fonts.cdnfonts.com/css/national-cartoon');
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.animateEnter{
+    font-family:"ChenYuluoyan-Thin-Monospaced";
+}
+.animation1{
+  -webkit-animation: widthChange 2.5s ease-out;
+  animation: widthChange 2.5s ease-out;
+}
+
+.titleMark{
+    animation: fadeIn 2s ease-in-out;
+}
+.bottomIntro{
+    animation: fadeInFromUp 2s ease-in-out;
+}
+
+@font-face {
+    font-family:"ChenYuluoyan-Thin-Monospaced" ;
+    src: url(./ChenYuluoyan-Thin-Monospaced.ttf) format("truetype");
+}
+
+
+
+/* 在您的 CSS 檔案中 */
+@keyframes widthChange {
+    from {
+        padding-right: 40%; //30
+        padding-left: 40%;  //30
+    }
+    to {
+        // width: 50%;
+        // opacity: 1;
+        padding-right: 0;
+        padding-left: 0;
+    }
+  }
+  @keyframes fadeInFromUp {
+    from {
+      opacity: 0;
+      transform: translateY(-10%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  
