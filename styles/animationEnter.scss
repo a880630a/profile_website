@@ -3,14 +3,24 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  
+  font-family: "Microsoft JhengHei";
+}
+.manual-font{
+  font-family:"ChenYuluoyan-Thin-Monospaced";
 }
 
 .animateEnter{
     font-family:"ChenYuluoyan-Thin-Monospaced";
+    
 }
 .animation1{
   -webkit-animation: widthChange 2.5s ease-out;
   animation: widthChange 2.5s ease-out;
+}
+
+.water-animation{
+  animation: waterFall 5s infinite ease-in-out;
 }
 
 .titleMark{
@@ -59,5 +69,14 @@
       opacity: 1;
     }
   }
-  
-  
+
+@keyframes waterFall {
+    from{
+      transform: translateY(-100vh);
+      opacity: 1;
+    }
+    to{
+      opacity: 1;
+      transform: translateY(100vh);
+    }
+}
