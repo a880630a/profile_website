@@ -5,7 +5,26 @@
     justify-content: center;
     position: sticky;
     top: 0px;
-    margin-bottom: 160vh;
+    margin-bottom: 150dvh;
+    min-height: 660px;
+    @media screen and (max-height:960px){
+      margin-bottom: 250dvh;
+    }
+    @media screen and (min-height:961px){
+      margin-bottom: 200dvh;
+    }
+    @media screen and (min-height:1000px){
+      margin-bottom: 190dvh;
+    }
+    @media screen and (min-height:1100px) {
+      margin-bottom: 150dvh;
+    }
+    @media screen and (min-height:1100px)and (min-width:768px) {
+      margin-bottom: 100dvh;
+    }
+    // @media screen and (min-height:961px){
+    //   margin-bottom: 100dvh;
+    // }
     .card{
       display: flex;
       flex-direction: column;

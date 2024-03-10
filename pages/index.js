@@ -69,7 +69,7 @@ export default function Home() {
                 opacity: 0,
                 paddingRight: "40%",
                 paddingLeft: "40%",
-                transition: { ease: "easeIn", duration: 3 },
+                transition: { ease: "easeIn", duration: 1.5 },
               }}
               transition={{
                 type: "tween",
@@ -152,7 +152,7 @@ export default function Home() {
             </>
           )}
           {homwView === true && (
-            <div className="dynamicBg h-[1100dvh] w-full">
+            <div className="dynamicBg  w-full h-full p-3">
               <HomePage />
               <About />
 

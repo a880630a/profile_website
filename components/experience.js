@@ -19,7 +19,7 @@ const experience = () => {
         <p className="text-[3rem] font-bold m-4 manual-font">
           工作經驗 | Experience
         </p>
-        <div className="bg-black/10 my-5 w-full flex flex-col p-3 ">
+        <div className="bg-black/10 my-5 w-full flex flex-col p-3 mb-5">
           <div className="w-full flex flex-row justify-evenly items-center">
             <Image
               alt="rosati"
