@@ -9,6 +9,7 @@ import Card from "@/components/card";
 import Skill from "@/components/skill";
 import Experience from "@/components/experience";
 import Head from "next/head";
+import BackgroundMusic from "@/components/backgroundMusic";
 
 import { projects } from "@/components/data";
 
@@ -16,6 +17,7 @@ export default function Home() {
   const [autoEnter1, setAutoEnter1] = useState(false);
   const [autoEnter2, setAutoEnter2] = useState(false);
   const [homwView, setHomeView] = useState(false);
+  const [playing, setPlaying] = useState(true);
 
   useEffect(() => {
     setAutoEnter1(true);
@@ -44,6 +46,7 @@ export default function Home() {
       <Head>
         <title>Xian Lin website</title>
       </Head>
+
       <div
         className={`bg-fixed ${
           homwView === false
@@ -51,6 +54,7 @@ export default function Home() {
             : ""
         }`}
       >
+        {playing === true ? <BackgroundMusic /> : ""}
         <AnimatePresence mode="wait">
           {autoEnter1 === true && (
             <motion.div
@@ -144,9 +148,23 @@ export default function Home() {
                 <div className="manual-font">By Xian Lin</div>
                 <div className="flex flex-row">
                   <p className="manual-font">聲音</p>
-                  <button className="mx-1 manual-font">On</button>
+                  <button
+                    className="mx-1 manual-font"
+                    onClick={() => {
+                      setPlaying(true);
+                    }}
+                  >
+                    On
+                  </button>
                   <p className="mx-1 manual-font"> | </p>
-                  <button className="mx-1 manual-font">Off</button>
+                  <button
+                    className="mx-1 manual-font"
+                    onClick={() => {
+                      setPlaying(false);
+                    }}
+                  >
+                    Off
+                  </button>
                 </div>
               </motion.div>
             </>
