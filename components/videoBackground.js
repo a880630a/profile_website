@@ -13,6 +13,7 @@ const VideoBackground = ({
   backgroundVideoName,
   url,
   imgName,
+  requireSkill,
   projectSkill,
   hoverStyle,
 }) => {
@@ -72,6 +73,66 @@ const VideoBackground = ({
               {" "}
               了解更多
             </a>
+          </div>
+        </div>
+        <div className="w-full h-[100dvh] flex flex-col justify-evenly items-center flex-wrap">
+          <h2 className="manual-font text-[3rem] font-bold m-4 ">技能概述</h2>
+          <div className="w-full flex flex-col md:flex-row justify-evenly items-center flex-wrap">
+            <h2 className="manual-font text-[3rem] font-normal m-4 ">前端</h2>
+            <div className="md:w-1/2">
+              {requireSkill["前端"].map((value, index) => {
+                return (
+                  <>
+                    <p
+                      className={`m-2 border-b-[0.5px] md:border-none ${
+                        themeDark === true ? "border-black" : "border-blue-50"
+                      }`}
+                      key={index}
+                    >
+                      {value}
+                    </p>
+                  </>
+                );
+              })}
+            </div>
+          </div>
+          <div className="w-full flex flex-col md:flex-row justify-evenly items-center flex-wrap">
+            <h2 className="manual-font text-[3rem] font-normal m-4 ">後端</h2>
+            <div className="md:w-1/2">
+              {requireSkill["後端"].map((value, index) => {
+                return (
+                  <>
+                    <p
+                      className={`m-2 border-b-[0.5px] md:border-none ${
+                        themeDark === true ? "border-black" : "border-blue-50"
+                      }`}
+                      key={index}
+                    >
+                      {value}
+                    </p>
+                  </>
+                );
+              })}
+            </div>
+          </div>
+          <div className="w-full flex flex-col md:flex-row justify-evenly items-center flex-wrap">
+            <h2 className="manual-font text-[3rem] font-normal m-4 ">工具</h2>
+            <div className="md:w-1/2">
+              {requireSkill["工具"].map((value, index) => {
+                return (
+                  <>
+                    <p
+                      className={`m-2 border-b-[0.5px] md:border-none ${
+                        themeDark === true ? "border-black" : "border-blue-50"
+                      }`}
+                      key={index}
+                    >
+                      {value}
+                    </p>
+                  </>
+                );
+              })}
+            </div>
           </div>
         </div>
         <div className="w-full h-[100dvh] flex flex-row justify-evenly items-center flex-wrap">

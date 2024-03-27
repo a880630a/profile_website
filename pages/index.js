@@ -234,9 +234,6 @@ export default function Home() {
                   專案 | Project
                 </p>
 
-                {/* {projects.map((project, i) => {
-                  return <Card key={`p_${i}`} {...project} i={i} />;
-                })} */}
                 {showZoomWork === true ? (
                   <ZoomWork />
                 ) : (

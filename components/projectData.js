@@ -4,10 +4,32 @@ export const projectData = [
     projectName: "GuiTab吉他譜生成網站",
     projectIntro: "一鍵獲取完整吉他譜，使喜歡的音樂永遠保存",
     projectDescription:
-      "GuiTab 是一個能夠根據使用者提供的 YouTube 影片網址（需包含 Tab 譜）自動生成完整吉他譜的網站。使用者只需輸入 YouTube 影片的網址，系統將擷取影片畫面，使用者可以選擇 TAB 區域，最後系統將生成完整的吉他譜。",
+      "GuiTab 是一個能夠根據使用者提供的 YouTube 影片網址（需包含 Tab 譜）自動生成完整吉他譜的網站。使用者只需輸入 YouTube 影片的網址，系統將擷取影片畫面，使用者可以選擇吉他譜區域，最後系統將生成完整的吉他譜。",
     backgroundVideoName: "guitar_3",
     url: "https://github.com/a880630a/GuiTab",
     imgName: "GuiTab.png",
+    requireSkill: {
+      前端: [
+        "前端完整開發。",
+        "使用 React 框架建構前端應用程式。",
+        "使用 Axios 處理與後端的 HTTP 請求。",
+        "利用 Canvas 讓使用者透過畫布框取要選擇的區域。",
+        "響應式網頁設計（RWD）。",
+        "提供直觀的操作介面，包括影片輸入框、吉他譜區域選擇、生成吉他譜等。",
+      ],
+      後端: [
+        "使用 Python 完成後端搭建。",
+        "使用 Flask 框架搭建後端伺服器。",
+        "使用 PyTube 套件處理 YouTube 影片的獲取。",
+        "進行影像處理，提取指定區域的吉他譜部分。",
+        "建立 API，使前後端能進行溝通",
+      ],
+      工具: [
+        "透過 Docker 實現應用程式的容器化部署，確保在不同環境中的一致性。",
+        "使用 Docker Compose 簡化多容器應用程式的管理。",
+        "便利於不同作業系統中運行。",
+      ],
+    },
     projectSkill: [
       "React",
       "JavaScript",
@@ -24,10 +46,32 @@ export const projectData = [
     projectName: "AS/RS自動倉儲模擬系統",
     projectIntro: "透過模擬，了解實際狀況",
     projectDescription:
-      "使用者可以透過該系統或取到各個倉儲資訊以及即時的車體位置與地圖資訊，可快速了解整體倉儲系統的運作狀況(此系統為協同開發，主要負責項目為畫面上地圖及車體更新、地圖上即時車輛行走路徑)",
+      "使用者可以透過該系統或取到各個倉儲資訊以及即時的車體位置與地圖資訊，可快速了解整體倉儲系統的運作狀況(此系統為協同開發，主要負責項目為畫面上地圖及車體更新、地圖上即時車輛行走路徑)。",
     backgroundVideoName: "ASRS",
     url: "https://github.com/a880630a/GuiTab",
     imgName: "asrs_s.jpg",
+    requireSkill: {
+      前端: [
+        "使用 Next.js 搭配 React 框架建構前端應用程式。",
+        "使用 Axios 處理與後端的 HTTP 請求。",
+        "前端 SVG 倉儲地圖製作與調整及特效顯示使網頁更具互動性。",
+        "響應式網頁設計（RWD）。",
+        "提供直觀的操作介面，派車管理、車輛狀態、工程模式等。",
+      ],
+      後端: [
+        "使用 Python 完成後端搭建",
+        "使用 Flask 框架搭建後端伺服器。",
+        "開發 SVG 自動生成倉儲地圖系統，可依照客戶端環境進行調整。",
+        "建立 API 使倉庫管理系統(WMS)能夠進行對接。",
+        "前端工程模式串接，並直接控制PLC。",
+        "建立 API，使前後端能進行溝通。",
+      ],
+      工具: [
+        "透過 Docker 實現應用程式的容器化部署，確保在不同環境中的一致性。",
+        "使用 Docker Compose 簡化多容器應用程式的管理。",
+        "便利於不同作業系統中運行。",
+      ],
+    },
     projectSkill: [
       "React",
       "JavaScript",
@@ -51,6 +95,27 @@ export const projectData = [
     backgroundVideoName: "AGV",
     url: "https://github.com/a880630a/GuiTab",
     imgName: "派車系統_s.png",
+    requireSkill: {
+      前端: [
+        "前端完整開發",
+        "使用 React 框架建構前端應用程式。",
+        "使用 Axios 處理與後端的 HTTP 請求。",
+        "前端 SVG AGV地圖製作與調整及特效顯示使網頁更具互動性。",
+        "響應式網頁設計（RWD）。",
+        "提供直觀的操作介面，派車管理、車輛狀態等。",
+      ],
+      後端: [
+        "使用 Python 完成後端搭建。",
+        "使用 Flask 框架搭建後端伺服器。",
+        "使用 Robot Operation System (ROS) 框架與 AGV 對接。",
+        "建立 API，使前後端能進行溝通。",
+      ],
+      工具: [
+        "透過 Docker 實現應用程式的容器化部署，確保在不同環境中的一致性。",
+        "使用 Docker Compose 簡化多容器應用程式的管理。",
+        "便利於不同作業系統中運行。",
+      ],
+    },
     projectSkill: [
       "React",
       "JavaScript",
@@ -67,10 +132,23 @@ export const projectData = [
     projectName: "燃料稅與牌照稅計算網站",
     projectIntro: "條件選擇，解決你算數學的煩惱",
     projectDescription:
-      "使用者可進行AGV多條件功能派車選擇與即時更新的AGV派車地圖，並與後端溝通可快速的確認目前的AGV位置與車輛狀態資訊，並結合動畫使網頁互動性增加。",
+      "使用者可設定日期、車輛類型、自/營業用、汽/柴油等多條件選擇，並立即獲取該條件的燃料稅與牌照稅的金額，減少計算的煩惱。",
     backgroundVideoName: "tax",
     url: "https://github.com/a880630a/GuiTab",
     imgName: "牌照稅.png",
+    requireSkill: {
+      前端: [
+        "前端完整開發。",
+        "使用 React 框架建構前端應用程式。",
+        "響應式網頁設計（RWD）。",
+        "提供直觀的操作介面，車種、CC數、日期等多條件選擇設定。",
+      ],
+      後端: [
+        "使用 Python 進行網路爬蟲。",
+        "透過 BeautifulSoup 套件方式，爬取財政部稅金資料。",
+      ],
+      工具: ["透過 github page 部署於網路上。"],
+    },
     projectSkill: ["React", "JavaScript", "SCSS", "Linux"],
   },
 ];
