@@ -10,18 +10,59 @@ import Skill from "@/components/skill";
 import Experience from "@/components/experience";
 import Head from "next/head";
 import BackgroundMusic from "@/components/backgroundMusic";
-
+import ZoomWork from "@/components/zoomWorks";
+import NotZoomWork from "@/components/notZoomWorks";
+import VideoBackground from "@/components/videoBackground";
+import { projectData } from "@/components/projectData";
 import { projects } from "@/components/data";
 
 export default function Home() {
   const [autoEnter1, setAutoEnter1] = useState(false);
   const [autoEnter2, setAutoEnter2] = useState(false);
   const [homwView, setHomeView] = useState(false);
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
+  const [showZoomWork, setShowZoomWork] = useState(false); // 用於判斷是否顯示Zoom效果
+
+  const [imgFocus, setImgFocus] = useState(""); //查看目前哪個技能img被hover
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); //設定目前鼠標位置
+
+  // 更新鼠標位置
+  const handleMouseMove = (e) => {
+    setMousePosition({ x: e.clientX, y: e.clientY });
+    console.log("a", mousePosition, imgFocus);
+  };
+
+  // hover後的懸浮視窗style
+  const hoverStyle = {
+    position: "fixed",
+    left: `${mousePosition.x + 30}px`, // 滑鼠位置右側30px
+    top: `${mousePosition.y - 5}px`, // 滑鼠位置上方5px
+    display: imgFocus !== "" ? "block" : "none", // 根據狀態顯示或隱藏
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      // 當畫面寬度大於等於 768px 時顯示 ZoomWork
+      setShowZoomWork(window.innerWidth >= 768);
+    };
+
+    // 監聽畫面大小變化
+    window.addEventListener("resize", handleResize);
+
+    // 初始檢查
+    handleResize();
+
+    // 移除監聽器以避免記憶體洩漏
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   useEffect(() => {
     setAutoEnter1(true);
   }, []);
+
+  useEffect(() => {
+    console.log("music", playing);
+  }, [playing]);
 
   useEffect(() => {
     // 這個函數用於處理滾動事件
@@ -149,7 +190,9 @@ export default function Home() {
                 <div className="flex flex-row">
                   <p className="manual-font">聲音</p>
                   <button
-                    className="mx-1 manual-font"
+                    className={`mx-1 manual-font ${
+                      playing === true ? "border-black  border-b-2" : ""
+                    }`}
                     onClick={() => {
                       setPlaying(true);
                     }}
@@ -158,7 +201,9 @@ export default function Home() {
                   </button>
                   <p className="mx-1 manual-font"> | </p>
                   <button
-                    className="mx-1 manual-font"
+                    className={`mx-1 manual-font ${
+                      playing === false ? "border-black border-b-2" : ""
+                    }`}
                     onClick={() => {
                       setPlaying(false);
                     }}
@@ -176,7 +221,7 @@ export default function Home() {
 
               <motion.div
                 className="nor_font"
-                initial={{ opacity: 0, x: "-20%" }}
+                initial={{ opacity: 0, x: 0 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{
                   type: "tween",
@@ -189,10 +234,34 @@ export default function Home() {
                   專案 | Project
                 </p>
 
-                {projects.map((project, i) => {
+                {/* {projects.map((project, i) => {
                   return <Card key={`p_${i}`} {...project} i={i} />;
+                })} */}
+                {showZoomWork === true ? (
+                  <ZoomWork />
+                ) : (
+                  <NotZoomWork className="notZoomWorks" picSrc="GuiTab.png" />
+                )}
+                {projectData.map((project, index) => {
+                  return (
+                    <div className="h-[500vh] relative" key={index}>
+                      <VideoBackground
+                        setImgFocus={setImgFocus}
+                        imgFocus={imgFocus}
+                        hoverStyle={hoverStyle}
+                        handleMouseMove={handleMouseMove}
+                        {...project}
+                      ></VideoBackground>
+                    </div>
+                  );
                 })}
-                <Skill />
+
+                <Skill
+                  setImgFocus={setImgFocus}
+                  imgFocus={imgFocus}
+                  hoverStyle={hoverStyle}
+                  handleMouseMove={handleMouseMove}
+                />
                 <Experience />
               </motion.div>
             </div>

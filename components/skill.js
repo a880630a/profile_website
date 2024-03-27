@@ -57,7 +57,7 @@ const toolList = [
   },
 ];
 
-const skill = () => {
+const skill = ({ setImgFocus, imgFocus, hoverStyle, handleMouseMove }) => {
   return (
     <div className="manual-font">
       <motion.div
@@ -79,11 +79,34 @@ const skill = () => {
             return (
               <div key={index} className="m-5 ">
                 <Image
+                  onMouseMove={handleMouseMove}
+                  onMouseEnter={() => {
+                    setImgFocus(value.name);
+                  }}
+                  onMouseLeave={() => {
+                    setImgFocus("");
+                  }}
+                  className="hover:rotate-180 duration-1000"
                   width={50}
                   height={50}
                   src={`/${value.name}.png`}
                   alt="image"
                 ></Image>
+                {imgFocus === value.name && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      type: "tween",
+                      duration: 0.5,
+                      ease: "easeIn",
+                    }}
+                    className="bg-black/30 text-blue-50 z-50 px-1"
+                    style={hoverStyle}
+                  >
+                    {imgFocus}
+                  </motion.div>
+                )}
               </div>
             );
           })}
@@ -96,11 +119,34 @@ const skill = () => {
             return (
               <div key={index} className="m-5 ">
                 <Image
+                  onMouseMove={handleMouseMove}
+                  onMouseEnter={() => {
+                    setImgFocus(value.name);
+                  }}
+                  onMouseLeave={() => {
+                    setImgFocus("");
+                  }}
+                  className="hover:rotate-180 duration-1000"
                   width={50}
                   height={50}
                   src={`/${value.name}.png`}
                   alt="image"
                 ></Image>
+                {imgFocus === value.name && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{
+                      type: "tween",
+                      duration: 0.5,
+                      ease: "easeIn",
+                    }}
+                    className="bg-black/30 text-blue-50 z-50 px-1"
+                    style={hoverStyle}
+                  >
+                    {imgFocus}
+                  </motion.div>
+                )}
               </div>
             );
           })}
