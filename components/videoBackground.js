@@ -75,7 +75,7 @@ const VideoBackground = ({
             </a>
           </div>
         </div>
-        <div className="w-full h-[100dvh] flex flex-col justify-evenly items-center flex-wrap">
+        <div className="w-full h-[200dvh] flex flex-col justify-evenly items-center flex-wrap">
           <h2 className="manual-font text-[3rem] font-bold m-4 ">技能概述</h2>
           <div className="w-full flex flex-col md:flex-row justify-evenly items-center flex-wrap">
             <h2 className="manual-font text-[3rem] font-normal m-4 ">前端</h2>

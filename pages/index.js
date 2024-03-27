@@ -241,7 +241,7 @@ export default function Home() {
                 )}
                 {projectData.map((project, index) => {
                   return (
-                    <div className="h-[500vh] relative" key={index}>
+                    <div className="h-[600vh] relative" key={index}>
                       <VideoBackground
                         setImgFocus={setImgFocus}
                         imgFocus={imgFocus}
