@@ -4,11 +4,6 @@ const BackgroundMusic = () => {
   useEffect(() => {
     const audio = document.getElementById("background-music");
     audio.play();
-
-    // 當元件卸載時暫停音樂，避免音樂持續播放
-    return () => {
-      audio.pause();
-    };
   }, []);
 
   return (

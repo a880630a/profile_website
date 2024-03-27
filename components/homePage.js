@@ -39,7 +39,7 @@ const homePage = () => {
           <div className="relative">
             <Image
               className="sm:mx-3 absolute z-10 left-4 w-[400px] "
-              src="/高畫質去背.png"
+              src="/Xian.png"
               alt="xian"
               width={500}
               height={500}
