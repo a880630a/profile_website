@@ -48,7 +48,7 @@ export const projectData = [
     projectDescription:
       "使用者可以透過該系統或取到各個倉儲資訊以及即時的車體位置與地圖資訊，可快速了解整體倉儲系統的運作狀況(此系統為協同開發，主要負責項目為畫面上地圖及車體更新、地圖上即時車輛行走路徑)。",
     backgroundVideoName: "ASRS",
-    url: "https://github.com/a880630a/GuiTab",
+    url: "https://wcs-demo.vercel.app/",
     imgName: "asrs_s.jpg",
     requireSkill: {
       前端: [
@@ -97,7 +97,7 @@ export const projectData = [
     imgName: "派車系統_s.png",
     requireSkill: {
       前端: [
-        "前端完整開發",
+        "前端完整開發。",
         "使用 React 框架建構前端應用程式。",
         "使用 Axios 處理與後端的 HTTP 請求。",
         "前端 SVG AGV地圖製作與調整及特效顯示使網頁更具互動性。",
@@ -134,7 +134,7 @@ export const projectData = [
     projectDescription:
       "使用者可設定日期、車輛類型、自/營業用、汽/柴油等多條件選擇，並立即獲取該條件的燃料稅與牌照稅的金額，減少計算的煩惱。",
     backgroundVideoName: "tax",
-    url: "https://github.com/a880630a/GuiTab",
+    url: "https://a880630a.github.io/car_calculate/",
     imgName: "牌照稅.png",
     requireSkill: {
       前端: [
