@@ -26,7 +26,7 @@ const VideoBackground = ({
   return (
     <>
       <video
-        className="w-[100vw] h-[100vh] object-cover sticky top-0 blur"
+        className="w-[100vw] h-[100vh] object-cover sticky top-0 blur "
         autoPlay
         muted
         loop
@@ -43,8 +43,10 @@ const VideoBackground = ({
           delay: 0.5,
           ease: "easeOut",
         }}
-        className={`absolute w-[100%] flex flex-col justify-center items-center ${
-          themeDark === true ? "text-black" : "text-blue-50"
+        className={`absolute w-[100%] flex flex-col justify-center items-center  ${
+          themeDark === true
+            ? "text-black bg-white/50"
+            : "text-blue-50 bg-black/40"
         }`}
       >
         <div className="w-full h-[100dvh] top-[50vh] flex flex-col justify-center items-center">
@@ -52,7 +54,7 @@ const VideoBackground = ({
             {projectName}
           </h2>
           <hr className="bg-gradient-to-r from-white to-gray-500 h-[2px] w-[50%] border-none" />
-          <p className="m-2">{projectIntro}</p>
+          <p className="m-2 text-[1rem]">{projectIntro}</p>
         </div>
         <div className="w-full h-[100dvh] flex flex-row justify-evenly items-center flex-wrap">
           <div className="mx-2 w-[100%] lg:w-[48%] h-[45%] object-cover overflow-hidden relative flex justify-center items-center">
@@ -64,9 +66,11 @@ const VideoBackground = ({
             ></Image>
           </div>
           <div className="mx-2 w-[100%] lg:w-[48%] h-[45%] flex flex-col justify-center items-start">
-            <p>{projectDescription}</p>
+            <p className="lg:text-[1.5rem] px-2 lg:px-[20%]">
+              {projectDescription}
+            </p>
             <a
-              className="m-2 text-blue-400 underline hover:text-blue-200"
+              className="m-2 text-blue-400 underline hover:text-blue-200 lg:px-[20%]"
               href={url}
               target="_blank"
             >
@@ -84,7 +88,7 @@ const VideoBackground = ({
                 return (
                   <>
                     <p
-                      className={`m-2 border-b-[0.5px] md:border-none ${
+                      className={`m-2 border-b-[0.5px] md:border-none lg:text-[1.5rem] ${
                         themeDark === true ? "border-black" : "border-blue-50"
                       }`}
                       key={index}
@@ -103,7 +107,7 @@ const VideoBackground = ({
                 return (
                   <>
                     <p
-                      className={`m-2 border-b-[0.5px] md:border-none ${
+                      className={`m-2 border-b-[0.5px] md:border-none lg:text-[1.5rem] ${
                         themeDark === true ? "border-black" : "border-blue-50"
                       }`}
                       key={index}
@@ -122,7 +126,7 @@ const VideoBackground = ({
                 return (
                   <>
                     <p
-                      className={`m-2 border-b-[0.5px] md:border-none ${
+                      className={`m-2 border-b-[0.5px] md:border-none lg:text-[1.5rem] ${
                         themeDark === true ? "border-black" : "border-blue-50"
                       }`}
                       key={index}
