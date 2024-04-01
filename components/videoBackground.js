@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 const VideoBackground = ({
   setImgFocus,
+  workRef,
   imgFocus,
   handleMouseMove,
   theme,
@@ -26,6 +27,7 @@ const VideoBackground = ({
   return (
     <>
       <video
+        ref={workRef}
         className="w-[100vw] h-[100vh] object-cover sticky top-0 blur "
         autoPlay
         muted
@@ -34,6 +36,7 @@ const VideoBackground = ({
       >
         <source src={`/videos/${backgroundVideoName}.mp4`} type="video/mp4" />
       </video>
+      {/* 自動滾到這裡 */}
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -50,9 +53,7 @@ const VideoBackground = ({
         }`}
       >
         <div className="w-full h-[100dvh] top-[50vh] flex flex-col justify-center items-center">
-          <h2 className="manual-font text-[3rem] font-bold m-4 ">
-            {projectName}
-          </h2>
+          <h2 className=" text-[3rem] font-bold m-4 ">{projectName}</h2>
           <hr className="bg-gradient-to-r from-white to-gray-500 h-[2px] w-[50%] border-none" />
           <p className="m-2 text-[1rem]">{projectIntro}</p>
         </div>
@@ -80,9 +81,9 @@ const VideoBackground = ({
           </div>
         </div>
         <div className="w-full h-[200dvh] flex flex-col justify-evenly items-center flex-wrap">
-          <h2 className="manual-font text-[3rem] font-bold m-4 ">技能概述</h2>
+          <h2 className=" text-[3rem] font-bold m-4 ">技能概述</h2>
           <div className="w-full flex flex-col md:flex-row justify-evenly items-center flex-wrap">
-            <h2 className="manual-font text-[3rem] font-normal m-4 ">前端</h2>
+            <h2 className=" text-[2rem] font-medium m-4 ">前端</h2>
             <div className="md:w-1/2">
               {requireSkill["前端"].map((value, index) => {
                 return (
@@ -101,7 +102,7 @@ const VideoBackground = ({
             </div>
           </div>
           <div className="w-full flex flex-col md:flex-row justify-evenly items-center flex-wrap">
-            <h2 className="manual-font text-[3rem] font-normal m-4 ">後端</h2>
+            <h2 className=" text-[2rem] font-medium m-4 ">後端</h2>
             <div className="md:w-1/2">
               {requireSkill["後端"].map((value, index) => {
                 return (
@@ -120,7 +121,7 @@ const VideoBackground = ({
             </div>
           </div>
           <div className="w-full flex flex-col md:flex-row justify-evenly items-center flex-wrap">
-            <h2 className="manual-font text-[3rem] font-normal m-4 ">工具</h2>
+            <h2 className=" text-[2rem] font-medium m-4 ">工具</h2>
             <div className="md:w-1/2">
               {requireSkill["工具"].map((value, index) => {
                 return (
@@ -140,9 +141,7 @@ const VideoBackground = ({
           </div>
         </div>
         <div className="w-full h-[100dvh] flex flex-row justify-evenly items-center flex-wrap">
-          <h2 className="manual-font text-[3rem] font-bold m-4 ">
-            專案技能與工具
-          </h2>
+          <h2 className=" text-[2rem] font-bold m-4 ">專案技能與工具</h2>
           <div className="flex flex-row  justify-center items-center flex-wrap">
             {projectSkill.map((value, index) => {
               return (

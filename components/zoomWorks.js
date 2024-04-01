@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef, useEffect } from "react";
-import { projects } from "@/components/data";
+import { projectData } from "@/components/projectData";
 
 export default function ZoomWork() {
   const container = useRef(null);
@@ -19,9 +19,9 @@ export default function ZoomWork() {
   ];
 
   return (
-    <div ref={container} className="container">
-      <div className="sticky">
-        {projects.map(({ src, title }, index) => {
+    <div ref={container} className="container1">
+      <div className="sticky1">
+        {projectData.map(({ imgName, projectName }, index) => {
           return (
             <motion.div
               style={{ scale: scale[index] }}
@@ -29,7 +29,13 @@ export default function ZoomWork() {
               key={index}
             >
               <div className="imageContainer">
-                <Image src={`/${src}`} fill alt={title} />
+                <Image
+                  src={`/${imgName}`}
+                  // fill
+                  width={300}
+                  height={300}
+                  alt={projectName}
+                />
               </div>
             </motion.div>
           );

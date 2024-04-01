@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Layout from "../components/layout";
-import { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollBar from "@/components/scrollBar";
 import HomePage from "@/components/homePage";
@@ -11,6 +11,7 @@ import Experience from "@/components/experience";
 import Head from "next/head";
 import BackgroundMusic from "@/components/backgroundMusic";
 import ZoomWork from "@/components/zoomWorks";
+import FakeZoomWork from "@/components/fakeZoomWork";
 import NotZoomWork from "@/components/notZoomWorks";
 import VideoBackground from "@/components/videoBackground";
 import { projectData } from "@/components/projectData";
@@ -22,9 +23,43 @@ export default function Home() {
   const [homwView, setHomeView] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [showZoomWork, setShowZoomWork] = useState(false); // 用於判斷是否顯示Zoom效果
+  const [fakeZoom, setFakeZoom] = useState(false);
+  const [workSelected, setWorkSelected] = useState(""); // 用於判斷哪個作品在Zoom中被點擊
+  const [targetDiv, setTargetDiv] = useState(null); // 用於移動到目標div
+  const workRef = useRef(null);
+  // 使用一個空對象來初始化refs容器
+  const workRefs = useRef({});
 
   const [imgFocus, setImgFocus] = useState(""); //查看目前哪個技能img被hover
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); //設定目前鼠標位置
+  useEffect(() => {
+    // setFakeZoom(false);
+  }, [fakeZoom]);
+
+  useEffect(() => {
+    let target = null;
+    if (workSelected === "GuiTab吉他譜生成網站") {
+      target = 0;
+    } else if (workSelected === "AS/RS自動倉儲模擬系統") {
+      target = 1;
+    } else if (workSelected === "AGV派車系統") {
+      target = 2;
+    } else if (workSelected === "燃料稅與牌照稅計算網站") {
+      target = 3;
+    }
+    const scrollToWork = (index) => {
+      const selectedWorkRef = workRefs.current[index];
+      if (selectedWorkRef && selectedWorkRef.current) {
+        console.log("a", selectedWorkRef);
+        selectedWorkRef.current.scrollIntoView({
+          behavior: "smooth",
+        });
+      }
+    };
+    scrollToWork(target);
+    setWorkSelected("");
+    setFakeZoom(false);
+  }, [workSelected]);
 
   // 更新鼠標位置
   const handleMouseMove = (e) => {
@@ -43,7 +78,7 @@ export default function Home() {
   useEffect(() => {
     const handleResize = () => {
       // 當畫面寬度大於等於 768px 時顯示 ZoomWork
-      setShowZoomWork(window.innerWidth >= 768);
+      setShowZoomWork(window.innerWidth >= 1024);
     };
 
     // 監聽畫面大小變化
@@ -89,7 +124,7 @@ export default function Home() {
       </Head>
 
       <div
-        className={`bg-fixed ${
+        className={`bg-fixed  ${
           homwView === false
             ? "bg-gradient-to-tr from-[#ffd90085] via-[#FF9A8B] to-[#8FD3F4] h-[101dvh]"
             : ""
@@ -126,7 +161,7 @@ export default function Home() {
                 setAutoEnter2(true); // 當動畫結束時更新狀態
                 setAutoEnter1(false);
               }}
-              className="manual-font flex justify-center items-center h-[100dvh]"
+              className=" flex justify-center items-center h-[100dvh]"
             >
               <div className="obstacle lg:w-[33%]"></div>
               <div className="flex lg:w-[33%] overflow-hidden justify-center items-center box-border">
@@ -144,7 +179,7 @@ export default function Home() {
                   width={50}
                   height={50}
                 ></Image>
-                <div className="manual-font authorAnimation text-nowrap whitespace-nowrap overflow-hidden font-semibold sm:mx-3 text-[3rem] w-[30$] inline-block ">
+                <div className=" authorAnimation text-nowrap whitespace-nowrap overflow-hidden font-semibold sm:mx-3 text-[3rem] w-[30$] inline-block ">
                   By Xian Lin
                 </div>
               </div>
@@ -168,8 +203,8 @@ export default function Home() {
                 className=" flex flex-row justify-center h-[90dvh] items-center"
               >
                 <div className="text-gray-800 font-black text-[3rem]">
-                  <h1 className="manual-font">Welcome to my</h1>
-                  <h1 className="ml-[3rem] manual-font">profile website</h1>
+                  <h1 className="">Welcome to my</h1>
+                  <h1 className="ml-[3rem] ">profile website</h1>
                 </div>
                 <ScrollBar />
               </motion.div>
@@ -186,11 +221,11 @@ export default function Home() {
                 }}
                 className=" font-semibold flex flex-row justify-around text-[1rem] md:text-[2rem]"
               >
-                <div className="manual-font">By Xian Lin</div>
+                <div className="">By Xian Lin</div>
                 <div className="flex flex-row">
-                  <p className="manual-font">聲音</p>
+                  <p className="">聲音</p>
                   <button
-                    className={`mx-1 manual-font ${
+                    className={`mx-1  ${
                       playing === true ? "border-black  border-b-2" : ""
                     }`}
                     onClick={() => {
@@ -199,9 +234,9 @@ export default function Home() {
                   >
                     On
                   </button>
-                  <p className="mx-1 manual-font"> | </p>
+                  <p className="mx-1 "> | </p>
                   <button
-                    className={`mx-1 manual-font ${
+                    className={`mx-1  ${
                       playing === false ? "border-black border-b-2" : ""
                     }`}
                     onClick={() => {
@@ -229,17 +264,31 @@ export default function Home() {
                   delay: 0.5,
                   ease: "easeOut",
                 }}
+                onAnimationComplete={() => {
+                  setFakeZoom(false);
+                }}
               >
                 <p className="manual-font text-[3rem] font-bold m-4 ">
                   專案 | Project
                 </p>
 
                 {showZoomWork === true ? (
-                  <ZoomWork />
+                  fakeZoom === false ? (
+                    <FakeZoomWork
+                      setWorkSelected={setWorkSelected}
+                      setFakeZoom={setFakeZoom}
+                    />
+                  ) : (
+                    <ZoomWork />
+                  )
                 ) : (
                   <NotZoomWork className="notZoomWorks" picSrc="GuiTab.png" />
                 )}
+
                 {projectData.map((project, index) => {
+                  if (!workRefs.current[index]) {
+                    workRefs.current[index] = React.createRef();
+                  }
                   return (
                     <div className="h-[600vh] relative" key={index}>
                       <VideoBackground
@@ -247,6 +296,7 @@ export default function Home() {
                         imgFocus={imgFocus}
                         hoverStyle={hoverStyle}
                         handleMouseMove={handleMouseMove}
+                        workRef={workRefs.current[index]}
                         {...project}
                       ></VideoBackground>
                     </div>
