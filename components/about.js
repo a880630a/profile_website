@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 
-const about = () => {
+const About = () => {
+  const [openDetail, setOpenDetail] = useState(0);
+
+  useEffect(() => {
+    console.log("openDetail", openDetail);
+  }, [openDetail]);
   return (
     <div className="manual-font">
       <motion.div
@@ -27,13 +32,13 @@ const about = () => {
             delay: 0.3,
             ease: "easeOut",
           }}
-          className=" w-[100vw] h-[100vw] lg:w-[50vw] mb-3 lg:h-[50vw] md:m-4 text-center rounded-full bg-gradient-to-tr from-[#6E748B] via-[#FF9A8B] to-[#808080] flex justify-center items-center"
+          className=" w-[100vw] h-[100vw] lg:w-[50vw] mb-3 lg:h-[50vw] md:m-4 text-center rounded-full bg-gradient-to-tr from-[#698dccaf] via-[#e48779] to-[#395eb683] flex justify-center items-center"
         >
           <p className=" m-4 text-[1.2rem] font-medium p-6">
             我是<strong>林品憲</strong>，今年25歲，來自台南，畢業於
             <strong>逢甲大學資訊工程學系</strong>
-            ，已擁有一年的軟體工程師經驗，但在未來5-7年將都會是在
-            <strong>前端工程師</strong>度過！
+            ，已擁有一年的軟體工程師經驗，但未來期望能繼續在
+            <strong>前端</strong>這塊領域持續精進⾃⼰！
           </p>
         </motion.div>
         <motion.div
@@ -45,29 +50,26 @@ const about = () => {
             delay: 0.5,
             ease: "easeOut",
           }}
-          className="text-[1.2rem] md:text-[1rem] leading-relaxed  font-medium w-[100vw] h-[100vw] lg:w-[25vw] lg:h-[25vw] md:m-4 text-start rounded-full bg-gradient-to-tr from-[#7fa4e5af] via-[#e48779] to-[#4c6cb683] flex justify-center items-center"
+          className="text-[1rem] md:text-[1rem] leading-relaxed  font-medium w-[100vw] h-[100vw] lg:w-[25vw] lg:h-[25vw] md:m-4 text-start rounded-full bg-gradient-to-tr from-[#7fa4e5af] via-[#e48779] to-[#4c6cb683] flex justify-center items-center"
         >
           <ul>
             <li>
-              <p>
-                1. 有<strong>獨立開發</strong>與<strong>團隊合作</strong>的能力
+              <p onClick={() => setOpenDetail(1)}>
+                1. 有獨立開發與團隊合作的能力
               </p>
             </li>
             <li>
-              <p>
-                2. 擁有開發<strong>前/後端</strong>專案的經驗
+              <p onClick={() => setOpenDetail(2)}>
+                2. 擁有開發前/後端專案的經驗
               </p>
             </li>
             <li>
-              <p>
-                3. 具有<strong>自主學習</strong>與<strong>解決問題</strong>
-                的能力
+              <p onClick={() => setOpenDetail(3)}>
+                3. 具有自主學習與解決問題 的能力
               </p>
             </li>
             <li>
-              <p>
-                4. 熱於<strong>分享</strong>技術與經驗
-              </p>
+              <p onClick={() => setOpenDetail(4)}>4. 熱於分享技術與經驗</p>
             </li>
           </ul>
         </motion.div>
@@ -76,4 +78,4 @@ const about = () => {
   );
 };
 
-export default about;
+export default About;

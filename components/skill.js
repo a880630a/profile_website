@@ -71,7 +71,7 @@ const skill = ({ setImgFocus, imgFocus, hoverStyle, handleMouseMove }) => {
         }}
       >
         <p className="text-[3rem] font-bold m-4 manual-font">技能 | Skill</p>
-        <p className="text-[1.5rem] font-medium manual-font m-2 w-full text-center">
+        <p className="text-[1.5rem] font-medium  m-2 w-full text-center">
           語言及框架
         </p>
         <div className="w-full bg-black/30 flex flex-row  justify-center items-center flex-wrap">
@@ -111,7 +111,7 @@ const skill = ({ setImgFocus, imgFocus, hoverStyle, handleMouseMove }) => {
             );
           })}
         </div>
-        <p className="text-[1.5rem] font-medium manual-font m-2 mt-6 w-full text-center">
+        <p className="text-[1.5rem] font-medium  m-2 mt-6 w-full text-center">
           工具及作業系統
         </p>
         <div className="w-full bg-black/30 flex flex-row  justify-center items-center flex-wrap">
