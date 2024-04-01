@@ -4,7 +4,7 @@
   margin: 0;
   box-sizing: border-box;
   
-  font-family: "Microsoft JhengHei";
+  font-family: "google-font";
 }
 .manual-font{
   font-family:"ChenYuluoyan-Thin-Monospaced";
@@ -33,6 +33,10 @@
 @font-face {
     font-family:"ChenYuluoyan-Thin-Monospaced" ;
     src: url(./ChenYuluoyan-Thin-Monospaced.ttf) format("truetype");
+}
+@font-face {
+  font-family: "google-font";
+  src: url(./Noto_Sans_TC/NotoSansTC-VariableFont_wght.ttf) format("truetype");
 }
 
 
