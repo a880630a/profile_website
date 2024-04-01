@@ -21,14 +21,14 @@
 ::-webkit-scrollbar-thumb:window-inactive {
 	background: rgba(247, 244, 244, 0.582); 
 }
-    .container{
+    .container1{
         height: 300vh;
         position: relative;
-        .sticky{
+        .sticky1{
             position: sticky;
             overflow: hidden;
             top: 0;
-            width: 98vw;
+            width: 99vw;
             height: 100vh;
             .el{
                 width: 100%;
@@ -47,27 +47,55 @@
                         box-shadow: 15px 15px 5px 0px rgb(231, 133, 133);
                     }
                 }
-                &:nth-of-type(2){
+                &:nth-of-type(2){ // asrs
                     .imageContainer{
-                        top: -30vh;
+                        top: -25vh;
                         left: 8%;
                         width: 35%;
                         height: 30vh;
                     }
+                    @media screen and (max-width:1024px) {
+                        .imageContainer{
+                            top: -15vh;
+                            left: 8%;
+                            width: 35%;
+                            height: 30vh;
+                        } 
+                    }
+                    @media screen and (max-width:1444px) {
+                        .imageContainer{
+                            top: -15vh;
+                        }
+                    }
                 }
-                &:nth-of-type(3){
+                &:nth-of-type(3){ //agv
                     .imageContainer{
-                        top: -10vh;
-                        left: -30%;
+                        top: 5vh;
+                        left: -25%;
                         width: 28%;
                         height: 45vh;
                     }
+                    @media screen and (max-width:1024px) {
+                        .imageContainer{
+                            top: 5vh;
+                            left: -30%;
+                            width: 28%;
+                            height: 45vh;
+                        }
+                    }
                 }
-                &:nth-of-type(4){
+                &:nth-of-type(4){ //car
                     .imageContainer{
-                        left: 28%;
+                        left: 25%;
                         width: 25%;
                         height: 25vh;
+                    }
+                    @media screen and (max-width:1024px) {
+                        .imageContainer{
+                            left: 30%;
+                            width: 25%;
+                            height: 25vh;
+                        }
                     }
                 }
                 &:nth-of-type(5){
@@ -97,4 +125,60 @@
             }
         }
     }
-
+.pos-el{
+    img{
+        box-shadow: 15px 15px 5px 0px rgb(231, 133, 133);
+    }
+    .pos-change{
+        top: 37vh;
+        left: 38%;
+    }
+    &:nth-of-type(2){
+        .pos-change{
+            top: 10vh;
+            left: 38%;
+        }
+        @media screen and (max-width:1024px) {
+            .pos-change{
+                top: 20vh;
+                left: 40%;
+            }
+        }
+        @media screen and (max-width:1440px) {
+            .pos-change{
+                top: 16vh;
+                left: 42%;
+            }
+        }
+    }
+    &:nth-of-type(3){
+        .pos-change{
+            top: 28vh;
+            left: 10%;
+        }
+        @media screen and (max-width:1024px) {
+            .pos-change{
+                top: 35vh;
+                left: 10%;
+            }
+        }
+    }
+    &:nth-of-type(4){
+        .pos-change{
+            top: 38vh;
+            left: 65%;
+        }
+        @media screen and (max-width:1024px) {
+            .pos-change{
+                top: 38vh;
+                left: 68%;
+            }
+        }
+    }
+    &:nth-of-type(5){
+        .pos-change{
+            top: 27.5vh;
+            left: 5%;
+        }
+    }
+}
