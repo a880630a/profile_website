@@ -5,49 +5,19 @@ import { projectData } from "@/components/projectData";
 
 export default function FakeZoomWork({ setWorkSelected, setFakeZoom }) {
   const container = useRef(null);
+  const [bigWidth, setBigWidth] = useState(null);
 
-  const stylePosition = [
-    {
-      num: 1,
-      pos: {},
-    },
-    {
-      num: "agv",
-      pos: {
-        // top: "-30vh",
-        top: "10vh",
-        left: "38%",
-      },
-    },
-    {
-      num: "as",
-      pos: {
-        top: "28vh",
-        left: "10%",
-      },
-    },
-    {
-      num: 4,
-      pos: {
-        top: "38vh",
-        left: "65%",
-      },
-    },
-    {
-      num: 5,
-      pos: {
-        top: "27.5vh",
-        left: "5%",
-      },
-    },
-    {
-      num: 6,
-      pos: {
-        top: "27.5vh",
-        left: "22.5vw",
-      },
-    },
-  ];
+  // 監聽螢幕寬度
+  useEffect(() => {
+    const handleWindowWidth = () => {
+      setBigWidth(window.innerWidth >= 1680); //因大於1680px的寬度時，間距會過大
+    };
+    window.addEventListener("resize", handleWindowWidth);
+
+    handleWindowWidth();
+
+    return () => window.removeEventListener("resize", handleWindowWidth);
+  });
 
   return (
     <div className="h-[500vh] w-[98vw]">
@@ -58,15 +28,16 @@ export default function FakeZoomWork({ setWorkSelected, setFakeZoom }) {
               return (
                 <div className="pos-el" key={index}>
                   <div
-                    className="pos-change absolute w-[25%] "
+                    className="pos-change absolute w-[25%] h-[25vh]"
                     // style={stylePosition[index].pos}
                   >
                     <Image
                       className="object-cover hover:scale-90 duration-200 cursor-pointer"
                       onClick={() => setWorkSelected(projectName)}
                       src={`/${imgName}`}
-                      width={300}
-                      height={300}
+                      // fill
+                      width={`${bigWidth === true ? 500 : 300}`}
+                      height={`${bigWidth === true ? 500 : 300}`}
                       alt={projectName}
                     />
                   </div>

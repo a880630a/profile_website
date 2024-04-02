@@ -1,13 +1,26 @@
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { projectData } from "@/components/projectData";
 
 export default function ZoomWork() {
   const container = useRef(null);
+  const [bigWidth, setBigWidth] = useState(null);
   const { scrollYProgress } = useScroll({
     target: container,
     offset: ["start start", "end end"],
+  });
+
+  // 監聽螢幕寬度
+  useEffect(() => {
+    const handleWindowWidth = () => {
+      setBigWidth(window.innerWidth >= 1680); //因大於1680px的寬度時，間距會過大
+    };
+    window.addEventListener("resize", handleWindowWidth);
+
+    handleWindowWidth();
+
+    return () => window.removeEventListener("resize", handleWindowWidth);
   });
 
   // 每張圖片的縮放比例
@@ -32,8 +45,8 @@ export default function ZoomWork() {
                 <Image
                   src={`/${imgName}`}
                   // fill
-                  width={300}
-                  height={300}
+                  width={`${bigWidth === true ? 500 : 300}`}
+                  height={`${bigWidth === true ? 500 : 300}`}
                   alt={projectName}
                 />
               </div>
