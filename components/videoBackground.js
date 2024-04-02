@@ -32,7 +32,7 @@ const VideoBackground = ({
         autoPlay
         muted
         loop
-        playsinline
+        playsInline
       >
         <source src={`/videos/${backgroundVideoName}.mp4`} type="video/mp4" />
       </video>
@@ -87,7 +87,7 @@ const VideoBackground = ({
             <div className="md:w-1/2">
               {requireSkill["前端"].map((value, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <p
                       className={`m-2 border-b-[0.5px] md:border-none lg:text-[1.5rem] ${
                         themeDark === true ? "border-black" : "border-blue-50"
@@ -96,7 +96,7 @@ const VideoBackground = ({
                     >
                       {value}
                     </p>
-                  </>
+                  </div>
                 );
               })}
             </div>
@@ -106,7 +106,7 @@ const VideoBackground = ({
             <div className="md:w-1/2">
               {requireSkill["後端"].map((value, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <p
                       className={`m-2 border-b-[0.5px] md:border-none lg:text-[1.5rem] ${
                         themeDark === true ? "border-black" : "border-blue-50"
@@ -115,7 +115,7 @@ const VideoBackground = ({
                     >
                       {value}
                     </p>
-                  </>
+                  </div>
                 );
               })}
             </div>
@@ -125,7 +125,7 @@ const VideoBackground = ({
             <div className="md:w-1/2">
               {requireSkill["工具"].map((value, index) => {
                 return (
-                  <>
+                  <div key={index}>
                     <p
                       className={`m-2 border-b-[0.5px] md:border-none lg:text-[1.5rem] ${
                         themeDark === true ? "border-black" : "border-blue-50"
@@ -134,7 +134,7 @@ const VideoBackground = ({
                     >
                       {value}
                     </p>
-                  </>
+                  </div>
                 );
               })}
             </div>

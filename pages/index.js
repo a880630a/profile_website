@@ -292,6 +292,7 @@ export default function Home() {
                   return (
                     <div className="h-[600vh] relative" key={index}>
                       <VideoBackground
+                        key={index}
                         setImgFocus={setImgFocus}
                         imgFocus={imgFocus}
                         hoverStyle={hoverStyle}
