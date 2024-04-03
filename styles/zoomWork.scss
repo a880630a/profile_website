@@ -67,6 +67,24 @@
                             top: -15vh;
                         }
                     }
+                    @media screen and (max-height:1100px) {
+                        .imageContainer{
+                            top: -20vh;
+                            
+                        }
+                    }
+                    @media screen and (max-height:855px) {
+                        .imageContainer{
+                            top: -25vh;
+                            
+                        }
+                    }
+                    @media screen and (max-height:700px) {
+                        .imageContainer{
+                            top: -34vh;
+                            
+                        }
+                    }
                 }
                 &:nth-of-type(3){ //agv
                     .imageContainer{
@@ -76,6 +94,14 @@
                         height: 45vh;
                     }
                     @media screen and (max-width:1024px) {
+                        .imageContainer{
+                            top: 5vh;
+                            left: -30%;
+                            width: 28%;
+                            height: 45vh;
+                        }
+                    }
+                    @media screen and (max-width:1300px) {
                         .imageContainer{
                             top: 5vh;
                             left: -30%;
@@ -95,6 +121,11 @@
                             left: 30%;
                             width: 25%;
                             height: 25vh;
+                        }
+                    }
+                    @media screen and (max-width:1300px) {
+                        .imageContainer{
+                            left: 32%;
                         }
                     }
                 }
@@ -125,7 +156,9 @@
             }
         }
     }
-.pos-el{
+
+// fakeZoomWork
+.pos-el{ 
     img{
         box-shadow: 15px 15px 5px 0px rgb(231, 133, 133);
     }
@@ -148,6 +181,18 @@
             .pos-change{
                 top: 16vh;
                 left: 42%;
+            }
+        }
+        @media screen and (max-height:830px) {
+            .pos-change{
+                top: 8vh;
+                left: 40%;
+            }
+        }
+        @media screen and (max-height:600px) {
+            .pos-change{
+                top: 3vh;
+                left: 40%;
             }
         }
     }
