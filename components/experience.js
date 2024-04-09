@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const experience = () => {
   return (
-    <div className="manual-font ">
+    <div className=" ">
       <motion.div
         className="mt-20 "
         initial={{ opacity: 0, x: "-20%" }}
@@ -16,9 +16,7 @@ const experience = () => {
           ease: "easeOut",
         }}
       >
-        <p className="text-[3rem] font-bold m-4 manual-font">
-          工作經驗 | Experience
-        </p>
+        <p className="text-[3rem] font-bold m-4 ">工作經驗 | Experience</p>
         <div className="bg-black/10 my-5 w-full flex flex-col p-3 mb-5">
           <div className="w-full flex flex-row justify-evenly items-center">
             <Image

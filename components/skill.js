@@ -59,7 +59,7 @@ const toolList = [
 
 const skill = ({ setImgFocus, imgFocus, hoverStyle, handleMouseMove }) => {
   return (
-    <div className="manual-font">
+    <div className="">
       <motion.div
         initial={{ opacity: 0, x: "-20%" }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -70,7 +70,7 @@ const skill = ({ setImgFocus, imgFocus, hoverStyle, handleMouseMove }) => {
           ease: "easeOut",
         }}
       >
-        <p className="text-[3rem] font-bold m-4 manual-font">技能 | Skill</p>
+        <p className="text-[3rem] font-bold m-4 ">技能 | Skill</p>
         <p className="text-[1.5rem] font-medium  m-2 w-full text-center">
           語言及框架
         </p>

@@ -9,7 +9,7 @@ const About = () => {
     console.log("openDetail", openDetail);
   }, [openDetail]);
   return (
-    <div className="manual-font">
+    <div className="">
       <motion.div
         initial={{ opacity: 0, x: "-20%" }}
         whileInView={{ opacity: 1, x: 0 }}
@@ -20,7 +20,7 @@ const About = () => {
           ease: "easeOut",
         }}
       >
-        <p className="text-[3rem] font-bold m-4 manual-font">關於 | About</p>
+        <p className="text-[3rem] font-bold m-4 ">關於 | About</p>
       </motion.div>
       <div className="flex flex-row justify-center items-end flex-wrap">
         <motion.div
