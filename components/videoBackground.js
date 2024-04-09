@@ -27,7 +27,6 @@ const VideoBackground = ({
   return (
     <>
       <video
-        ref={workRef}
         className="w-[100vw] h-[100vh] object-cover sticky top-0 blur "
         autoPlay
         muted
@@ -38,6 +37,7 @@ const VideoBackground = ({
       </video>
       {/* 自動滾到這裡 */}
       <motion.div
+        ref={workRef}
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{

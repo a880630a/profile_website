@@ -10,3 +10,6 @@ https://www.svgrepo.com/svg/452442/check-circle?edit=true
 
 LOGO 系列
 https://www.svgrepo.com/svg/473589/docker?edit=true
+
+arrow-up
+https://www.svgrepo.com/svg/500759/arrow-up?edit=true

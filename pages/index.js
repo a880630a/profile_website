@@ -5,17 +5,14 @@ import { motion, AnimatePresence } from "framer-motion";
 import ScrollBar from "@/components/scrollBar";
 import HomePage from "@/components/homePage";
 import About from "@/components/about";
-import Card from "@/components/card";
 import Skill from "@/components/skill";
 import Experience from "@/components/experience";
 import Head from "next/head";
 import BackgroundMusic from "@/components/backgroundMusic";
-import ZoomWork from "@/components/zoomWorks";
-import FakeZoomWork from "@/components/fakeZoomWork";
 import NotZoomWork from "@/components/notZoomWorks";
 import VideoBackground from "@/components/videoBackground";
+import ProjectView from "@/components/projectView";
 import { projectData } from "@/components/projectData";
-import { projects } from "@/components/data";
 
 export default function Home() {
   const [autoEnter1, setAutoEnter1] = useState(false);
@@ -23,19 +20,25 @@ export default function Home() {
   const [homwView, setHomeView] = useState(false);
   const [playing, setPlaying] = useState(false);
   const [showZoomWork, setShowZoomWork] = useState(false); // 用於判斷是否顯示Zoom效果
-  const [fakeZoom, setFakeZoom] = useState(false);
   const [workSelected, setWorkSelected] = useState(""); // 用於判斷哪個作品在Zoom中被點擊
-  const [targetDiv, setTargetDiv] = useState(null); // 用於移動到目標div
-  const workRef = useRef(null);
   // 使用一個空對象來初始化refs容器
   const workRefs = useRef({});
 
+  // project Home 自動滾輪
+  const workHomeRef = useRef(null);
+  const [workHome, setWorkHome] = useState(false);
+
   const [imgFocus, setImgFocus] = useState(""); //查看目前哪個技能img被hover
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 }); //設定目前鼠標位置
-  useEffect(() => {
-    // setFakeZoom(false);
-  }, [fakeZoom]);
 
+  useEffect(() => {
+    if (workHome === true) {
+      if (workHomeRef && workHomeRef.current) {
+        workHomeRef.current.scrollIntoView({ behavior: "smooth" });
+        setWorkHome(false);
+      }
+    }
+  }, [workHome]);
   useEffect(() => {
     let target = null;
     if (workSelected === "GuiTab吉他譜生成網站") {
@@ -50,7 +53,6 @@ export default function Home() {
     const scrollToWork = (index) => {
       const selectedWorkRef = workRefs.current[index];
       if (selectedWorkRef && selectedWorkRef.current) {
-        console.log("a", selectedWorkRef);
         selectedWorkRef.current.scrollIntoView({
           behavior: "smooth",
         });
@@ -58,13 +60,11 @@ export default function Home() {
     };
     scrollToWork(target);
     setWorkSelected("");
-    setFakeZoom(false);
   }, [workSelected]);
 
   // 更新鼠標位置
   const handleMouseMove = (e) => {
     setMousePosition({ x: e.clientX, y: e.clientY });
-    console.log("a", mousePosition, imgFocus);
   };
 
   // hover後的懸浮視窗style
@@ -255,6 +255,7 @@ export default function Home() {
               <About />
 
               <motion.div
+                ref={workHomeRef}
                 className="nor_font"
                 initial={{ opacity: 0, x: 0 }}
                 whileInView={{ opacity: 1, x: 0 }}
@@ -264,45 +265,46 @@ export default function Home() {
                   delay: 0.5,
                   ease: "easeOut",
                 }}
-                onAnimationComplete={() => {
-                  setFakeZoom(false);
-                }}
               >
-                <p className="manual-font text-[3rem] font-bold m-4 ">
-                  專案 | Project
-                </p>
+                <p className=" text-[3rem] font-bold m-4 ">專案 | Project</p>
 
                 {showZoomWork === true ? (
-                  fakeZoom === false ? (
-                    <FakeZoomWork
-                      setWorkSelected={setWorkSelected}
-                      setFakeZoom={setFakeZoom}
-                    />
-                  ) : (
-                    <ZoomWork />
-                  )
+                  <ProjectView setWorkSelected={setWorkSelected} />
                 ) : (
                   <NotZoomWork className="notZoomWorks" picSrc="GuiTab.png" />
                 )}
-
-                {projectData.map((project, index) => {
-                  if (!workRefs.current[index]) {
-                    workRefs.current[index] = React.createRef();
-                  }
-                  return (
-                    <div className="h-[600vh] relative" key={index}>
-                      <VideoBackground
-                        key={index}
-                        setImgFocus={setImgFocus}
-                        imgFocus={imgFocus}
-                        hoverStyle={hoverStyle}
-                        handleMouseMove={handleMouseMove}
-                        workRef={workRefs.current[index]}
-                        {...project}
-                      ></VideoBackground>
-                    </div>
-                  );
-                })}
+                <div>
+                  {projectData.map((project, index) => {
+                    if (!workRefs.current[index]) {
+                      workRefs.current[index] = React.createRef();
+                    }
+                    return (
+                      <div className="h-[600vh] relative" key={index}>
+                        <VideoBackground
+                          key={index}
+                          setImgFocus={setImgFocus}
+                          imgFocus={imgFocus}
+                          hoverStyle={hoverStyle}
+                          handleMouseMove={handleMouseMove}
+                          workRef={workRefs.current[index]}
+                          {...project}
+                        ></VideoBackground>
+                      </div>
+                    );
+                  })}
+                  <div className="sticky w-full bottom-0 right-0 flex justify-end">
+                    <Image
+                      className="bg-black/50 m-5 rounded-lg cursor-pointer"
+                      onClick={() => {
+                        setWorkHome(true);
+                      }}
+                      src="/arrow-up.png"
+                      alt="arrow"
+                      width={30}
+                      height={30}
+                    ></Image>
+                  </div>
+                </div>
 
                 <Skill
                   setImgFocus={setImgFocus}
